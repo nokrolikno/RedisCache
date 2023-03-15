@@ -2,12 +2,28 @@ version: '3.8'
 
 services:
 
-  service:
+  server:
+    depends_on:
+      - redis
     build:
       context: ./fastapi_server
       dockerfile: ./Dockerfile
     restart: always
+    environment:
+      - API_REDIS_HOST=redis
     volumes:
       - ./fastapi_server:/home
     ports:
       - 7777:7777
+
+  redis:
+    container_name: redis
+    build:
+      context: ./redis_server
+      dockerfile: ./Dockerfile
+    expose:
+      - 6999
+    ports:
+      - 6999:6999
+    volumes:
+      - ./redis_server:/home
