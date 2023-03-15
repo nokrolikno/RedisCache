@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+
+  service:
+    build:
+      context: ./fastapi_server
+      dockerfile: ./Dockerfile
+    restart: always
+    volumes:
+      - ./fastapi_server:/home
+    ports:
+      - 7777:7777
