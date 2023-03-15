@@ -6,10 +6,6 @@ class SetModel(BaseModel):
     value: str
 
 
-class GetModel(BaseModel):
-    key: str
-
-
 class ValueModel(BaseModel):
     value: str
 
